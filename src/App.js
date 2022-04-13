@@ -6,17 +6,18 @@ import Orbit from './components/Orbit';
 import Model from './components/Model';
 import Floor from './components/Floor';
 import Bulb from './components/Bulb';
+import ModelKey from './components/ModelArray';
+
+const handelePointerDown = e => {
+  console.log(e)
+}
 
 function App() {
-  const handeleClick = e =>{
-    if (!window.activeMesh) return;
-    window.activeMesh.material.color = new THREE.Color(e.target.stlye.background);
-  }
 
   return (
     <div style={{height: '100vh', width: '100vw'}}>
       <div style={{position: 'absolute', zIndex: 1}}>
-        <div 
+        <div onPointerDown={handelePointerDown}
           style={{
             background:'blue',
             height: 50,
