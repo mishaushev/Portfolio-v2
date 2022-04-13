@@ -1,33 +1,64 @@
 import './App.css';
-import { Canvas }from 'react-three-fiber'
+import { Canvas, useThree }from 'react-three-fiber'
+import * as THREE from 'three'
 import { Suspense } from 'react';
 import Orbit from './components/Orbit';
 import Model from './components/Model';
-import Box from './components/Box';
 import Floor from './components/Floor';
 import Bulb from './components/Bulb';
 
 function App() {
+  const handeleClick = e =>{
+    if (!window.activeMesh) return;
+    window.activeMesh.material.color = new THREE.Color(e.target.stlye.background);
+  }
 
   return (
     <div style={{height: '100vh', width: '100vw'}}>
-      <Canvas 
-        shadowMap
-        style={{background: 'black'}} 
-        camera={{position: [4,6,4]}}
-      >
-        <ambientLight intensity={[0.4]} />
-        <Bulb position={[0,3,0]}/>
-        <Suspense fallback={null}>
-          <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'
-            scale={new Array(3).fill(0.1)}
-            position={[0,0.6,0]}
-          />
-        </Suspense>
-        <Orbit />
-        <axesHelper args={[5]}/>
-        <Floor />
-      </Canvas>
+      <div style={{position: 'absolute', zIndex: 1}}>
+        <div 
+          onClick={handeleClick}
+          style={{
+            background:'blue',
+            height: 50,
+            width: 50
+          }}
+          ></div>
+        <div
+          onClick={handeleClick}
+          style={{
+            background:'yellow',
+            height: 50,
+            width: 50
+          }}
+        ></div>
+        <div
+          onClick={handeleClick}
+          style={{
+            background:'green',
+            height: 50,
+            width: 50
+          }}
+        ></div>
+      </div>
+      
+        <Canvas 
+          shadowMap
+          style={{background: 'black'}} 
+          camera={{position: [4,6,4]}}
+        >
+          <ambientLight intensity={[0.4]} />
+          <Bulb position={[0,3,0]}/>
+          <Suspense fallback={null}>
+            <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'
+              scale={new Array(3).fill(0.1)}
+              position={[0,0.6,0]}
+            />
+          </Suspense>
+          <Orbit />
+          <axesHelper args={[5]}/>
+          <Floor />
+        </Canvas>
     </div>
   );
 }
