@@ -17,7 +17,6 @@ function App() {
     <div style={{height: '100vh', width: '100vw'}}>
       <div style={{position: 'absolute', zIndex: 1}}>
         <div 
-          onClick={handeleClick}
           style={{
             background:'blue',
             height: 50,
@@ -25,7 +24,6 @@ function App() {
           }}
           ></div>
         <div
-          onClick={handeleClick}
           style={{
             background:'yellow',
             height: 50,
@@ -33,7 +31,6 @@ function App() {
           }}
         ></div>
         <div
-          onClick={handeleClick}
           style={{
             background:'green',
             height: 50,
@@ -47,8 +44,8 @@ function App() {
           style={{background: 'black'}} 
           camera={{position: [4,6,4]}}
         >
-          <ambientLight intensity={[0.4]} />
-          <Bulb position={[0,3,0]}/>
+          <ambientLight intensity={[0.2]} />
+          <Bulb position={[2,9,0]}/>
           <Suspense fallback={null}>
             <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'
               scale={new Array(3).fill(0.1)}

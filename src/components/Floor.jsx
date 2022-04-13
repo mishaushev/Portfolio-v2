@@ -1,6 +1,8 @@
 const Floor = props => {
     return (
-      <mesh {...props} receiveShadow>
+      <mesh {...props} 
+        receiveShadow
+        castShadow>
         <boxBufferGeometry args={[10,2,10]}/>
         <meshPhysicalMaterial />
       </mesh>
