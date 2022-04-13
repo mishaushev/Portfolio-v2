@@ -10,7 +10,10 @@ const Model = props => {
     )
     console.log(model)
     return (
-        <primitive />
+        <primitive 
+            object={model.scene}
+            {...props}
+        />
     )
 }
 

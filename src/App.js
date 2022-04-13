@@ -36,7 +36,6 @@ const Box = props => {
         <boxBufferGeometry/>
         <meshPhysicalMaterial 
           color='blue'/>
-          fog={false}
       </mesh>
   )
 }
@@ -67,19 +66,18 @@ function App() {
       <Canvas 
         shadowMap
         style={{background: 'black'}} 
-        camera={{position: [3,3,3]}}
+        camera={{position: [4,6,4]}}
       >
-        <fog attach='fog' args={['white', 1, 10]}/>
         <ambientLight intensity={[0.4]} />
         <Bulb position={[0,3,0]}/>
         <Suspense fallback={null}>
-          <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'/>
+          <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'
+            scale={new Array(3).fill(0.1)}
+            position={[0,0.6,0]}
+          />
         </Suspense>
         <Orbit />
         <axesHelper args={[5]}/>
-        <Suspense fallback={null}>
-          <Box position={[0,2,0]}/>
-        </Suspense>
         <Floor />
       </Canvas>
     </div>
