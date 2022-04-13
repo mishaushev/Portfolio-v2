@@ -1,63 +1,11 @@
 import './App.css';
-import { Canvas, 
-  useFrame, 
-  useThree, 
-  extend,
-  useLoader }from 'react-three-fiber'
-import {useRef, Suspense } from 'react';
-import Model from './components/Model'
-import { 
-  OrbitControls
- } from 'three/examples/jsm/controls/OrbitControls';
-extend({ OrbitControls });
-
-const Orbit = () => {
-  const { camera, gl } = useThree();
-  return (
-    <orbitControls args={[camera, gl.domElement]}/>
-  )
-}
-
-const Box = props => {
-  const ref = useRef();
-
-  useFrame(state => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-
-  })
-    return(
-      <mesh 
-        ref={ref} 
-        {...props} 
-        castShadow 
-        receiveShadow
-      >
-        <boxBufferGeometry/>
-        <meshPhysicalMaterial 
-          color='blue'/>
-      </mesh>
-  )
-}
-
-const Floor = props => {
-  return (
-    <mesh {...props} receiveShadow>
-      <boxBufferGeometry args={[10,2,10]}/>
-      <meshPhysicalMaterial />
-    </mesh>
-  )
-}
-
-const Bulb = props => {
-  return (
-    <mesh {...props}>
-      <pointLight castShadow/>
-      <sphereBufferGeometry args={[0.2, 20, 20]}/>
-      <meshPhongMaterial emissive='yellow'/>
-    </mesh>
-  )
-}
+import { Canvas }from 'react-three-fiber'
+import { Suspense } from 'react';
+import Orbit from './components/Orbit';
+import Model from './components/Model';
+import Box from './components/Box';
+import Floor from './components/Floor';
+import Bulb from './components/Bulb';
 
 function App() {
 
