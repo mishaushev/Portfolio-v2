@@ -5,6 +5,7 @@ import { Canvas,
   extend,
   useLoader }from 'react-three-fiber'
 import {useRef, Suspense } from 'react';
+import Model from './components/Model'
 import { 
   OrbitControls
  } from 'three/examples/jsm/controls/OrbitControls';
@@ -71,6 +72,9 @@ function App() {
         <fog attach='fog' args={['white', 1, 10]}/>
         <ambientLight intensity={[0.4]} />
         <Bulb position={[0,3,0]}/>
+        <Suspense fallback={null}>
+          <Model path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf'/>
+        </Suspense>
         <Orbit />
         <axesHelper args={[5]}/>
         <Suspense fallback={null}>
