@@ -4,12 +4,14 @@ import * as THREE from 'three'
 import { Suspense } from 'react';
 import Orbit from './components/Orbit';
 import Model from './components/Model';
+import Model2 from './components/Model2';
 import Floor from './components/Floor';
 import Bulb from './components/Bulb';
 import ModelKey from './components/ModelArray';
 
 const handelePointerDown = e => {
   console.log(e)
+  .add (Model.path='/Cotton Candy/Buggy Guy/_Buggy Guy.gltf')
 }
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
     <div style={{height: '100vh', width: '100vw'}}>
       <div style={{position: 'absolute', zIndex: 1}}>
         <div onPointerDown={handelePointerDown}
+        
           style={{
             background:'blue',
             height: 50,

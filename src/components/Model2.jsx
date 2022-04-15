@@ -1,0 +1,22 @@
+import { useLoader } from "react-three-fiber";
+import { 
+    GLTFLoader 
+} from 'three/examples/jsm/loaders/GLTFLoader';
+
+const Model2 = props => {  
+    const model = useLoader(
+        GLTFLoader,
+        props.path
+    )    
+
+    return (
+        <primitive 
+            receiveShadow
+            castShadow
+            object={model.scene}
+            {...props}
+        />
+    )
+}
+
+export default Model2;
